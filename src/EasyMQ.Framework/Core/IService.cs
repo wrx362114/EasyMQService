@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyMQ.Framework.Core
 {
-    public interface IService
+    public interface IService : ISingleton
     {
         bool Start();
         bool Stop();

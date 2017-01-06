@@ -27,9 +27,11 @@ namespace EasyMQ.Framework.Ninject
             kernel.Bind(m =>
             {
                 //加载插件dll,中的所有继承自单例接口的类为单例注入
+                var b =
                 m.FromAssembliesInPath("Plugins")
-                    .Select(a => a.IsClass && a.GetInterface(typeof(ISingleton).FullName) != null)
-                    .BindAllInterfaces()
+                    .Select(a => 
+                        a.IsClass && a.GetInterface(typeof(ISingleton).FullName) != null);
+                    b.BindAllInterfaces()
                     .Configure(c => c.InSingletonScope());
                 m.FromThisAssembly()
                     .SelectAllClasses()

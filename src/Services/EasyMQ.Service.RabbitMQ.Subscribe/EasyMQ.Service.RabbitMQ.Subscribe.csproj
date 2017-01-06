@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5054061B-2B0C-4031-8691-BA956F8B80C5}</ProjectGuid>
+    <ProjectGuid>{E05FF06C-7177-4181-A8D3-EE2EC1B09D95}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EasyMQ.Framework</RootNamespace>
-    <AssemblyName>EasyMQ.Framework</AssemblyName>
+    <RootNamespace>EasyMQ.Service.RabbitMQ.Subscribe</RootNamespace>
+    <AssemblyName>EasyMQ.Service.RabbitMQ.Subscribe</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,16 +30,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EasyNetQ, Version=0.63.5.454, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EasyNetQ.0.63.5.454\lib\net45\EasyNetQ.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="log4net, Version=2.0.7.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.7\lib\net45-full\log4net.dll</HintPath>
+      <HintPath>..\..\packages\log4net.2.0.7\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <HintPath>..\..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+    <Reference Include="RabbitMQ.Client, Version=3.6.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\RabbitMQ.Client.3.6.0\lib\net45\RabbitMQ.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -50,25 +54,23 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Topshelf, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b800c4cfcdeea87b, processorArchitecture=MSIL">
-      <HintPath>..\packages\Topshelf.4.0.3\lib\net452\Topshelf.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Topshelf.Ninject, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Topshelf.Ninject.0.4.0.0\lib\net45\Topshelf.Ninject.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\CoreService.cs" />
-    <Compile Include="Core\IService.cs" />
-    <Compile Include="Core\ISingleton.cs" />
-    <Compile Include="Core\CommandResult.cs" />
-    <Compile Include="Ninject\CoreModule.cs" />
-    <Compile Include="Ninject\NinjectBuilderConfigurator.cs" />
-    <Compile Include="Ninject\HostConfiguratorExtensions.cs" />
-    <Compile Include="Ninject\ServiceConfiguratorExtensions.cs" />
+    <Compile Include="EventBaseModel.cs" />
+    <Compile Include="IEvent.cs" />
+    <Compile Include="RabbitMQSubscribeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubscribeModule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\EasyMQ.Common\EasyMQ.Common.csproj">
+      <Project>{E9B1F86F-CF0B-40BE-BE96-661523FC0928}</Project>
+      <Name>EasyMQ.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EasyMQ.Framework\EasyMQ.Framework.csproj">
+      <Project>{5054061b-2b0c-4031-8691-ba956f8b80c5}</Project>
+      <Name>EasyMQ.Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

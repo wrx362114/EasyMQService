@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyMQ.Common.Extension;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace EasyMQ.Common.Cron
 		{
 			if (cron.Any(m => !EnableChar.Contains(m)))
 			{
-				throw new FormatException("Cron表达式包含不支持的字符:{0}".FormatExt(cron));
+				throw new FormatException($"Cron表达式包含不支持的字符:{cron}");
 			}
 			#region 初始化
 

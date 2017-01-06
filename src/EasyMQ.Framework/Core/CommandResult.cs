@@ -1,8 +1,13 @@
-﻿using System; 
-namespace EasyMQ.Model
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EasyMQ.Framework.Core
 {
     /// <summary> 操作结果实体 </summary>
-    public class OperatedResult
+    public class CommandResult
     {
         /// <summary> 是否成功 </summary>
         public bool IsCompleted { get; set; }
@@ -15,9 +20,9 @@ namespace EasyMQ.Model
         /// <summary> 成功 </summary>
         /// <param name="msg"></param>
         /// <returns></returns>
-        public static OperatedResult Completed(string msg)
+        public static CommandResult Completed(string msg)
         {
-            return new OperatedResult
+            return new CommandResult
             {
                 IsCompleted = true,
                 Message = msg
@@ -27,27 +32,27 @@ namespace EasyMQ.Model
         /// <summary> 成功 </summary>
         /// <param name="msg"></param>
         /// <returns></returns>
-        public static OperatedResult Completed()
+        public static CommandResult Completed()
         {
-            return new OperatedResult
+            return new CommandResult
             {
                 IsCompleted = true,
                 Message = "操作成功"
             };
         }
         /// <summary> 失败 </summary>
-        public static OperatedResult Failed(string msg)
+        public static CommandResult Failed(string msg)
         {
-            return new OperatedResult
+            return new CommandResult
             {
                 IsCompleted = false,
                 Message = msg
             };
         }
 
-        public static OperatedResult CatchException(string msg, Exception ex)
+        public static CommandResult CatchException(string msg, Exception ex)
         {
-            return new OperatedResult
+            return new CommandResult
             {
                 IsCompleted = false,
                 Message = msg,
@@ -56,13 +61,13 @@ namespace EasyMQ.Model
         }
     }
 
-    public class ValueResult<T> : OperatedResult
+    public class QueryResult<T> : CommandResult
     {
-        public ValueResult(T result)
+        public QueryResult(T result)
         {
-            Result = result;
+            Body = result;
         }
 
-        public T Result { get; private set; }
+        public T Body { get; private set; }
     }
 }
