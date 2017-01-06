@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using Topshelf;
 using Topshelf.Logging;
 using EasyMQ.Framework.Ninject;
-using EasyMQ.Common.Extension;
 using EasyMQ.Framework.Core;
+using EasyMQ.Framework.Common.Extension;
 
 namespace EasyMQ.Service
 {

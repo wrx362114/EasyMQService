@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml.Serialization;
 using System.IO;
-namespace EasyMQ.Common.Extension
+namespace EasyMQ.Framework.Common.Extension
 {
     public static class ObjectExt
     {

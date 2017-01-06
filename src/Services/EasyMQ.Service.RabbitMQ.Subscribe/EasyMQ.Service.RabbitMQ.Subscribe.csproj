@@ -63,10 +63,6 @@
     <Compile Include="SubscribeModule.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\EasyMQ.Common\EasyMQ.Common.csproj">
-      <Project>{E9B1F86F-CF0B-40BE-BE96-661523FC0928}</Project>
-      <Name>EasyMQ.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\EasyMQ.Framework\EasyMQ.Framework.csproj">
       <Project>{5054061b-2b0c-4031-8691-ba956f8b80c5}</Project>
       <Name>EasyMQ.Framework</Name>

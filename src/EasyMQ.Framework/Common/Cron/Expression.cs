@@ -1,11 +1,11 @@
-﻿using EasyMQ.Common.Extension;
+﻿using EasyMQ.Framework.Common.Extension;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EasyMQ.Common.Cron
+namespace EasyMQ.Framework.Common.Cron
 {
 	/// <summary>
 	/// 时间跨度表达式

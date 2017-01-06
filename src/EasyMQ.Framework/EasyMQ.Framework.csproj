@@ -34,6 +34,10 @@
       <HintPath>..\packages\log4net.2.0.7\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
@@ -43,6 +47,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -60,6 +65,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Cron\Expression.cs" />
+    <Compile Include="Common\Extension\BoolExt.cs" />
+    <Compile Include="Common\Extension\ByteExt.cs" />
+    <Compile Include="Common\Extension\DateTimeExt.cs" />
+    <Compile Include="Common\Extension\DecimalExt.cs" />
+    <Compile Include="Common\Extension\IEnumerableExt.cs" />
+    <Compile Include="Common\Extension\Int32Ext.cs" />
+    <Compile Include="Common\Extension\ObjectExt.cs" />
+    <Compile Include="Common\Extension\StringExt.cs" />
+    <Compile Include="Common\Extension\TypeExt.cs" />
     <Compile Include="Core\CoreService.cs" />
     <Compile Include="Core\IService.cs" />
     <Compile Include="Core\ISingleton.cs" />

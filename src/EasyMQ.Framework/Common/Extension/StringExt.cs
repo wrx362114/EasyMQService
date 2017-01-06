@@ -12,7 +12,7 @@ using System.Xml.Serialization;
 using Encoding = System.Text.Encoding; 
 using System;
 
-namespace EasyMQ.Common.Extension
+namespace EasyMQ.Framework.Common.Extension
 {
     public static class StringExt
     {

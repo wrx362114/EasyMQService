@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace EasyMQ.Common.Extension
+namespace EasyMQ.Framework.Common.Extension
 { 
     public static class IEnumerableExt
     {

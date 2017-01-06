@@ -1,7 +1,7 @@
-﻿using EasyMQ.Common.Cron;
+﻿using EasyMQ.Framework.Common.Cron;
 using System;
 
-namespace EasyMQ.Common.Extension
+namespace EasyMQ.Framework.Common.Extension
 {
 	public static class DateTimeExt
 	{

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EasyMQ.Common.Extension
+namespace EasyMQ.Framework.Common.Extension
 {
     public static class BoolExt
     {

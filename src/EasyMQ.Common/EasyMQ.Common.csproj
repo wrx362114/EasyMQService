@@ -45,16 +45,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cron\Expression.cs" />
-    <Compile Include="Extension\BoolExt.cs" />
-    <Compile Include="Extension\ByteExt.cs" />
-    <Compile Include="Extension\DateTimeExt.cs" />
-    <Compile Include="Extension\DecimalExt.cs" />
-    <Compile Include="Extension\IEnumerableExt.cs" />
-    <Compile Include="Extension\Int32Ext.cs" />
-    <Compile Include="Extension\ObjectExt.cs" />
-    <Compile Include="Extension\StringExt.cs" />
-    <Compile Include="Extension\TypeExt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

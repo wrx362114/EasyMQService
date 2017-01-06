@@ -1,4 +1,4 @@
-﻿using EasyMQ.Common.Extension;
+﻿using EasyMQ.Framework.Common.Extension;
 using EasyMQ.Framework.Core;
 using EasyNetQ;
 using System;

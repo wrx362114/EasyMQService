@@ -33,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=2.0.6.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>packages\log4net.2.0.6\lib\net45-full\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=2.0.7.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.7\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -74,10 +74,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EasyMQ.Common\EasyMQ.Common.csproj">
-      <Project>{E9B1F86F-CF0B-40BE-BE96-661523FC0928}</Project>
-      <Name>EasyMQ.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EasyMQ.Framework\EasyMQ.Framework.csproj">
       <Project>{5054061b-2b0c-4031-8691-ba956f8b80c5}</Project>
       <Name>EasyMQ.Framework</Name>
