@@ -19,7 +19,7 @@ namespace ES.Common.Extend
         /// <returns></returns>
         public static string ToJson(this object obj)
         {
-            return JsonHelper.ToJson(obj);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(obj);
         }
         /// <summary>
         /// 

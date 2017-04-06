@@ -20,7 +20,7 @@ namespace ES.Common.Extend
         /// <returns></returns>
         public static string Encode2String(this byte[] data)
         {
-            return GlobalConfig.Encoding.GetString(data);
+            return Encoding.Default.GetString(data);
         }
         /// <summary>
         /// 转字符串
