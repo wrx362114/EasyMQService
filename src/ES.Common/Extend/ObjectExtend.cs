@@ -33,5 +33,11 @@ namespace ES.Common.Extend
         {
             return v.CompareTo(min) >= 0 && v.CompareTo(max) <= 0;
         }
+        public static ES.Model.Message.TimedTaskMsg SetMsg(this Model.Message.TimedTaskMsg task, Model.Message.IEventMsg msg)
+        { 
+            task.MsgTypeFullName = msg.GetType().FullName;
+            task.MsgJson = msg.ToJson();
+            return task;
+        }
     }
 }

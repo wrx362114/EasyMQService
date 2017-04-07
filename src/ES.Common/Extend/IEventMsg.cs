@@ -24,11 +24,11 @@ namespace ES.Common.Extend
                     {
                         if (bus == null)
                         {
-                            if (string.IsNullOrEmpty("RabbitServerUrl".GetAppSetting()))
+                            if (string.IsNullOrEmpty("RabbitServerUrl".GetConfig()))
                             {
                                 throw new Exception("rabbit消息队列服务器连接字符串没有配置");
                             }
-                            bus = RabbitHutch.CreateBus("RabbitServerUrl".GetAppSetting());
+                            bus = RabbitHutch.CreateBus("RabbitServerUrl".GetConfig());
                         }
                     }
                 }
