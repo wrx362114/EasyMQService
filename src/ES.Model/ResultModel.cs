@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using YW.Model.Enums;
+using System.Threading.Tasks; 
 
-namespace YW.Model
+namespace ES.Model
 {
     /// <summary>
     /// 统一返回值实体

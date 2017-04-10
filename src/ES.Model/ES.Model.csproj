@@ -30,6 +30,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ServiceStack.Common, Version=4.5.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Common.4.5.8\lib\net45\ServiceStack.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces, Version=4.0.0.0, Culture=neutral, PublicKeyToken=e06fbc6124f57c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Interfaces.4.5.8\lib\portable-wp80+sl5+net45+win8+wpa81+monotouch+monoandroid+xamarin.ios10\ServiceStack.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite, Version=4.5.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.OrmLite.4.5.8\lib\net45\ServiceStack.OrmLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=4.5.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Text.4.5.8\lib\net45\ServiceStack.Text.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,25 +57,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entitys\FromT4Attribute.cs" />
-    <Compile Include="HasId.cs" />
+    <Compile Include="Entitys\HasId.cs" />
     <Compile Include="Message\DailyTasksMsg.cs" />
     <Compile Include="Message\EventType.cs" />
     <Compile Include="Message\IEventMsg.cs" />
     <Compile Include="Message\TimedTaskMsg.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultCodeEnum.cs" />
     <Compile Include="ResultModel.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="Entitys\OrmLite.Poco.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>OrmLite.Poco.txt</LastGenOutput>
-    </Content>
-    <Content Include="Entitys\OrmLite.Poco.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OrmLite.Poco.tt</DependentUpon>
-    </Content>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

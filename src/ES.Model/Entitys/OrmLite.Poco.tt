@@ -1,5 +1,5 @@
 <#@ include file="../OrmLite.Core.ttinclude" #>
-<#@	assembly name="$(TargetDir)YW.Model.dll" #>
+<#@	assembly name="$(TargetDir)ES.Model.dll" #>
 <#@ output extension=".txt" #>
 <#
 	// Settings
@@ -18,9 +18,8 @@
 	string UseSpecificNamedConnection = ""; //if not null: Will use name provided as NamedConnecftion and AddNamedConnection = true, else ConnectionStringName is used as default NamedConnection
     // Read schema
 	var tables = LoadTables(MakeSingular);
-	var DbName="YW2016";
+	var DbName="ESDatabase";
 
-	tables["t_base_pinyin"].Ignore = true;
 
 /*
 	// Tweak Schema
@@ -32,7 +31,7 @@
 	tables["tablename"]["columnname"].PropertyType="bool";		// To change the property type of a column
 */
 //排除model项目中已编译的表
-	var totalModels=System.Reflection.Assembly.GetAssembly(typeof(YW.Model.ResultModel)).GetTypes();
+	var totalModels=System.Reflection.Assembly.GetAssembly(typeof(ES.Model.ResultModel)).GetTypes();
 	var entityModels=totalModels
 		.Where(m =>
 				m.BaseType!=null
@@ -109,7 +108,7 @@ manager.StartNewFile("T4_" + tbl.PascalCaseName + ".cs");
 <#}#>
 	[FromT4]
     [Serializable]
-    public partial class <#=tbl.PascalCaseName#><#if (tbl.HasPK() && UseIdAsPK) { #> : YW.Model.HasId<#}#>
+    public partial class <#=tbl.PascalCaseName#><#if (tbl.HasPK() && UseIdAsPK) { #> : ES.Model.HasId<#}#>
     {
 <# if (GenerateConstructor) { #>
 		public <#=tbl.PascalCaseName#>()

@@ -1,9 +1,10 @@
 ﻿using EasyNetQ;
+using ES.Model.Message;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks; 
+using System.Threading.Tasks;
 
 namespace ES.Common.Extend
 {
@@ -14,7 +15,7 @@ namespace ES.Common.Extend
     {
         private static object _sync = new object();
         private static IBus bus;
-        private static IBus Bus
+        public static IBus RabbitServerBus
         {
             get
             {
@@ -42,7 +43,7 @@ namespace ES.Common.Extend
         /// <returns></returns>
         public static async Task PublishAsync(this IEventMsg msg)
         {
-            await Bus.PublishAsync(msg);
+            await RabbitServerBus.PublishAsync(msg);
         }
     }
 }
