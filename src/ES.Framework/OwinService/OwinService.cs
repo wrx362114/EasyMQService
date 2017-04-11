@@ -3,6 +3,8 @@ using System;
 using ES.Framework.Core;
 using ES.Model.Message;
 using ES.Common.Extend;
+using Hangfire;
+using Owin;
 
 namespace ES.Framework
 {
@@ -13,7 +15,6 @@ namespace ES.Framework
         {
             Log = log;
         }
-        private string endpoint = "http://localhost:8081";
         private IDisposable _host;
         public bool Start()
         {
@@ -24,9 +25,18 @@ namespace ES.Framework
             Log.Info("[OwinService] 正在启动web服务");
             try
             {
-                _host = WebApp.Start<Startup>(new StartOptions
+                _host = WebApp.Start("ApiHost".GetConfig(), app =>
                 {
-                    Port=8081
+                    GlobalConfiguration.Configuration
+                        .UseSqlServerStorage("HangfireDb", new Hangfire.SqlServer.SqlServerStorageOptions { SchemaName = "Hangfire" })
+                        .UseLogProvider(new LogProvider(Log))
+                        .UseNinjectActivator(Ninject.NinjectBuilderConfigurator.Kernel) ;
+                    app.UseHangfireDashboard();
+                    app.UseHangfireServer();
+
+                    var config = new System.Web.Http.HttpConfiguration();
+                    config.DependencyResolver = new NinjectDependencyResolver(Ninject.NinjectBuilderConfigurator.Kernel);
+                    app.UseWebApi(config);
                 });
                 Hangfire.RecurringJob
                     .AddOrUpdate("DailyTasks", () => new DailyTasksMsg { Date = DateTime.Now.Date }.PublishAsync().Wait(), "0 1 * * *");
@@ -36,7 +46,7 @@ namespace ES.Framework
             {
                 Log.Error("[OwinService] 启动web服务失败->" + ex.ToString());
             }
-            Log.Info("[OwinService] web服务已启动,正在监听:" + endpoint);
+            Log.Info("[OwinService] web服务已启动,正在监听:" + "ApiHost".GetConfig());
             return true;
         }
 

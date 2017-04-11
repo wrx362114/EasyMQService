@@ -19,7 +19,7 @@ namespace ES.Service
             {
                 c.UseLog4Net("log4net.config", true);
                 var log = HostLogger.Get("Default");
-                log.Info("[Program] 已读取log4net配置");
+                log.Info("[Program] 根据配置文件对log4net初始化");
                 c.StartManually();
                 c.StartAutomaticallyDelayed();
                 c.UseNinject();
