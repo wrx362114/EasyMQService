@@ -30,7 +30,7 @@ namespace ES.Framework
                     GlobalConfiguration.Configuration
                         .UseSqlServerStorage("HangfireDb", new Hangfire.SqlServer.SqlServerStorageOptions { SchemaName = "Hangfire" })
                         .UseLogProvider(new LogProvider(Log))
-                        .UseNinjectActivator(Ninject.NinjectBuilderConfigurator.Kernel) ;
+                        .UseNinjectActivator(Ninject.NinjectBuilderConfigurator.Kernel);
                     app.UseHangfireDashboard();
                     app.UseHangfireServer();
 
@@ -39,7 +39,7 @@ namespace ES.Framework
                     app.UseWebApi(config);
                 });
                 Hangfire.RecurringJob
-                    .AddOrUpdate("DailyTasks", () => new DailyTasksMsg { Date = DateTime.Now.Date }.PublishAsync().Wait(), "0 1 * * *");
+                    .AddOrUpdate("DailyTasks", () => new DailyTasksMsg { Date = DateTime.Now.Date }.PublishAsync().Wait(), Cron.Daily(1));
                 Log.Info("[OwinService.DailyTasks] 初始化每日任务");
             }
             catch (Exception ex)
