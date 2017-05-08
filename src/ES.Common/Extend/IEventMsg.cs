@@ -1,9 +1,6 @@
 ﻿using EasyNetQ;
 using ES.Model.Message;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ES.Common.Extend
@@ -15,7 +12,7 @@ namespace ES.Common.Extend
     {
         private static object _sync = new object();
         private static IBus bus;
-        public static IBus RabbitServerBus
+        public static IBus Bus
         {
             get
             {
@@ -42,8 +39,29 @@ namespace ES.Common.Extend
         /// <param name="msg"></param>
         /// <returns></returns>
         public static async Task PublishAsync(this IEventMsg msg)
+        {//TODO:优化并发性能.
+            lock (_sync)
+            {
+                Bus.PublishAsync(msg).Wait();
+            }
+        }
+        /// <summary>
+        /// 发布消息
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        public static void Publish(this IEventMsg msg)
         {
-            await RabbitServerBus.PublishAsync(msg);
+            lock (_sync)
+            {
+                Bus.Publish(msg);
+            }
+        }
+        public static TimedTaskMsg SetMsg(this TimedTaskMsg msg, IEventMsg value)
+        {
+            msg.MsgTypeFullName = value.GetType().FullName;
+            msg.MsgJson = value.ToJson();
+            return msg;
         }
     }
 }

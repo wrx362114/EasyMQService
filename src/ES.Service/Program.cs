@@ -19,12 +19,12 @@ namespace ES.Service
             {
                 c.UseLog4Net("log4net.config", true);
                 var log = HostLogger.Get("Default");
-                log.Info("[Program] 根据配置文件对log4net初始化");
+                log.Info("[Service] 已读取log4net配置");
                 c.StartManually();
                 c.StartAutomaticallyDelayed();
                 c.UseNinject();
                 c.RunAsNetworkService();
-                log.Info("[Program] 开始生成服务");
+                log.Info("[Service] 开始生成服务");
                 c.Service<CoreService>(s =>
                 {
                     s.ConstructUsingNinject();

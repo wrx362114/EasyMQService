@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ES.Model.Message
 {
@@ -20,10 +16,12 @@ namespace ES.Model.Message
         /// </summary>
         public int RetryCount { get; set; }
         /// <summary>
-        /// 定时循环字符串
-        /// 为空时使用starttime为触发时间.执行一次性任务
+        /// 任务唯一id
+        /// 以业务名称+id的方式命名
+        /// 如:TaskType_1000
+        /// 用于重复触发时的合并操作
         /// </summary>
-        public string Cron { get; set; }
+        public string TaskId { get; set; } 
         /// <summary>
         /// 开始时间
         /// </summary>
@@ -35,6 +33,6 @@ namespace ES.Model.Message
         /// <summary>
         /// 要发送的消息实体json序列化
         /// </summary>
-        public string MsgJson { get; set; }
+        public string MsgJson { get; set; } 
     }
 }

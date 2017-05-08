@@ -5,6 +5,7 @@
     /// </summary>
     public interface IService : ISingleton
     {
+        string Name { get; }
         bool Start();
         bool Stop();
 

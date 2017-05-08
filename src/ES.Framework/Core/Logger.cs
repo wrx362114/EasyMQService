@@ -5,7 +5,7 @@ using System;
 
 namespace ES.Framework.Core
 {
-    public class Logger : ILog
+    public class Logger
     {
         private LogWriter logger;
         public Logger(LogWriter log)
@@ -24,50 +24,9 @@ namespace ES.Framework.Core
             }
         }
 
-        public bool Log(LogLevel logLevel, Func<string> messageFunc, Exception exception)
-        {
-            if (messageFunc == null)
-            {
-                return false;
-            }
-            WriteLog(logLevel.GetSourceLevels(), messageFunc() + (exception != null ? exception.ToString() : ""));
-            return true;
-        }
-    }
-    public class LogProvider : ILogProvider
-    {
-        public LogProvider(Logger log)
-        {
-            logger = log;
-        }
-        private Logger logger;
-        public ILog GetLogger(string name)
-        {
-            return logger;
-        }
     }
     public static class LoggerExtend
     {
-        public static SourceLevels GetSourceLevels(this LogLevel olv)
-        {
-            switch (olv)
-            {
-                case LogLevel.Trace:
-                    return SourceLevels.ActivityTracing;
-                case LogLevel.Debug:
-                    return SourceLevels.Verbose;
-                case LogLevel.Info:
-                    return SourceLevels.Information;
-                case LogLevel.Warn:
-                    return SourceLevels.Warning;
-                case LogLevel.Error:
-                    return SourceLevels.Error;
-                case LogLevel.Fatal:
-                    return SourceLevels.Critical;
-                default:
-                    return SourceLevels.Off;
-            }
-        }
         public static void Info(this Logger log, string info, params string[] args)
         {
             log.WriteLog(SourceLevels.Information, info, args);
