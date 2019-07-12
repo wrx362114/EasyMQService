@@ -6,3 +6,7 @@ rabbitmq的强类型快速开发框架,插件式开发.
     new TimedTaskMsg{TaskId="CreateOrder_1",StartTime=DateTime.Now.AddDay(1)}
       .SetMsg(new CreateOrderMsg{})
       .Publish()
+
+
+我去..这个玩意儿怎么都有9个star 了..你们激励到我了!
+我要完善这个玩意儿.
